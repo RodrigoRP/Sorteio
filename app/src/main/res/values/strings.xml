@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sorteio</string>
+    <string name="btnAdd">Adicionar</string>
+    <string name="nome">Nome</string>
+    <string name="sortear">Sortear!</string>
+    <string name="nomeSorteado">Vazio</string>
+    <string name="nomeSorteadoTxt">Nome do Sorteado</string>
+    <string name="todo">TODO</string>
+</resources>
