@@ -6,4 +6,5 @@
     <string name="nomeSorteado">Vazio</string>
     <string name="nomeSorteadoTxt">Nome do Sorteado</string>
     <string name="todo">TODO</string>
+    <string name="btnChangeCo">Trocar a cor de fundo</string>
 </resources>
