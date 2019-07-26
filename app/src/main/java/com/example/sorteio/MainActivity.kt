@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun AddNameLista() {
-        var newName = addNameTxt.text.toString()
+        val newName = addNameTxt.text.toString()
         nameList.add(newName)   //Adiciona o nome na lista
 
         if (newName.isNotEmpty()) { //Verifica se a lista esta vazia, caso esteja aparece uma msg informando e nao é inserido na lista.
@@ -46,21 +46,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun sortearNumero() {
 
-        var secureRandom = SecureRandom()
-        var randomName = secureRandom.nextInt(nameList.count())
+        val secureRandom = SecureRandom()
+        val randomName = secureRandom.nextInt(nameList.count())
         selectedNameTxt.text = nameList[randomName] //o numero escolhido é a posicao do nome na lista
     }
 
     private fun getTimeNow() {
 
-        var btnChangeColor: Button = findViewById(R.id.btnChangeColor)
+        val btnChangeColor: Button = findViewById(R.id.btnChangeColor)
         btnChangeColor.setOnClickListener {
             // Trecho de código é executado apenas ao clicar no botao
-            var now = LocalDateTime.now()        // Variavel now recebe o tempo atual
-            var number: Int =
+            val now = LocalDateTime.now()        // Variavel now recebe o tempo atual
+            val number: Int =
                 now.toString().takeLast(1)
                     .toInt()  // Variavel number recebe apenas o valor da ultima posicao da variavel
-            var corChange =
+            val corChange =
                 findColor(number)   // Variavel corChange recebe o resultado da cor associada ao numero obtido pela variavel number
             changeBackgroundColor(corChange)           // Chama a função que altera a cor do Background
         }
