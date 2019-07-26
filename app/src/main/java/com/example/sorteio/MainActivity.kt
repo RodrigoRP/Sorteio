@@ -17,10 +17,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getTimeNow()
+
+        // Ao clicar no botão Trocar a cor de fundo
+        btnChangeColor.setOnClickListener {
+            getTimeNow()
+        }
+        // Ao clicar no botão SORTEAR!!
         btnSortear.setOnClickListener {
             sortearNumero()
         }
+        // Ao clicar no botao Adicionar
         btnAddName.setOnClickListener {
             AddNameLista()
 
@@ -28,12 +34,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /*Funcão que adiciona o nome na lista*/
     private fun AddNameLista() {
         val newName = addNameTxt.text.toString()
-        nameList.add(newName)   //Adiciona o nome na lista
+        nameList.add(newName)   // Adiciona o nome na lista
 
-        if (newName.isNotEmpty()) { //Verifica se a lista esta vazia, caso esteja aparece uma msg informando e nao é inserido na lista.
-
+        // Verifica se a lista esta vazia, caso esteja aparece uma msg informando, e nao é inserido na lista.
+        if (newName.isNotEmpty()) {
             nameList.add(newName)
             Toast.makeText(applicationContext, newName + " foi adicionado com SUCESSO!!", Toast.LENGTH_SHORT).show()
             addNameTxt.text.clear()
@@ -44,39 +51,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*Função para sortear o ganhador*/
     private fun sortearNumero() {
-
-        val secureRandom = SecureRandom()
-        val randomName = secureRandom.nextInt(nameList.count())
-        selectedNameTxt.text = nameList[randomName] //o numero escolhido é a posicao do nome na lista
-    }
-
-    private fun getTimeNow() {
-
-        val btnChangeColor: Button = findViewById(R.id.btnChangeColor)
-        btnChangeColor.setOnClickListener {
-            // Trecho de código é executado apenas ao clicar no botao
-            val now = LocalDateTime.now()        // Variavel now recebe o tempo atual
-            val number: Int =
-                now.toString().takeLast(1)
-                    .toInt()  // Variavel number recebe apenas o valor da ultima posicao da variavel
-            val corChange =
-                findColor(number)   // Variavel corChange recebe o resultado da cor associada ao numero obtido pela variavel number
-            changeBackgroundColor(corChange)           // Chama a função que altera a cor do Background
+        /*Primeiro verifica se a lista esta vazia*/
+        if (nameList.isNotEmpty()) {
+            val secureRandom = SecureRandom()
+            val randomName = secureRandom.nextInt(nameList.count())
+            selectedNameTxt.text = nameList[randomName] // O numero escolhido é a posicao do nome na lista
+        } else {
+            Toast.makeText(applicationContext, "A LISTA DE NOMES ESTA VAZIA!!", Toast.LENGTH_SHORT).show()
         }
+
+    }
+
+    /*Funcao que pega o tempo Atual*/
+    private fun getTimeNow() {
+        val now = LocalDateTime.now() // Variavel now recebe o tempo atual
+        val number: Int =
+            now.toString().takeLast(1).toInt()  // Variavel number recebe apenas o valor da ultima posicao da variavel
+        val corChange =
+            findColor(number)   // Variavel corChange recebe o resultado da cor associada ao numero obtido pela variavel number
+        changeBackgroundColor(corChange)           // Chama a função que altera a cor do Background
+
     }
 
 
-    /*
-        Funcao para alterar a cor do Background
-    */
+    /*Função para alterar a cor do Background*/
     private fun changeBackgroundColor(corChange: String) {
         backGround.setBackgroundColor(Color.parseColor(corChange))
     }
 
-    /*
-        Função que retorna a cor relacionada ao numero
-    */
+    /*Função que retorna a cor relacionada ao número*/
     private fun findColor(num: Int): String {
         lateinit var nameOfColor: String
         when (num) {

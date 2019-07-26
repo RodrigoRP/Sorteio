@@ -3,5 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/bungee</item>
         <item>@font/convergence</item>
+        <item>@font/quattrocento</item>
+        <item>@font/trade_winds</item>
     </array>
 </resources>
